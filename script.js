@@ -1,35 +1,39 @@
-const canvas = document.getElementById('signatureCanvas');
-const ctx = canvas.getContext('2d');
+const canvas = document.getElementById("signatureCanvas");
+const ctx = canvas.getContext("2d");
 let painting = false;
 let undoStack = [];
 
-const startPosition = (e) => {
+// Start Drawing
+function startPosition(e) {
     painting = true;
     draw(e);
-};
+}
 
-const finishedPosition = () => {
+// End Drawing
+function endPosition() {
     painting = false;
     ctx.beginPath();
-};
+}
 
-const draw = (e) => {
-    if (!painting) return; // Only draw when the mouse is pressed down
-    ctx.lineWidth = document.getElementById('fontSize').value;
-    ctx.lineCap = 'round';
-    ctx.strokeStyle = document.getElementById('textColor').value;
+// Draw on Canvas
+function draw(e) {
+    if (!painting) return;
+    ctx.lineWidth = document.getElementById("fontSize").value;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = document.getElementById("textColor").value;
 
-    // Draw line
     ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
     ctx.stroke();
     ctx.beginPath();
     ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
-};
+}
 
+// Save canvas state for undo
 const saveState = () => {
     undoStack.push(canvas.toDataURL());
 };
 
+// Undo the last action
 const undo = () => {
     if (undoStack.length > 0) {
         const previousState = undoStack.pop();
@@ -42,47 +46,50 @@ const undo = () => {
     }
 };
 
-// Mouse events
-canvas.addEventListener('mousedown', startPosition);
-canvas.addEventListener('mouseup', finishedPosition);
-canvas.addEventListener('mousemove', draw);
-canvas.addEventListener('mouseleave', finishedPosition); // Stop drawing when leaving canvas
-canvas.addEventListener('mouseenter', () => {
-    if (painting) {
-        draw(event); // Draw if painting is true when mouse enters
-    }
-});
-canvas.addEventListener('mousedown', saveState);
-
-// Button events
-document.getElementById('clearBtn').addEventListener('click', () => {
+// Clear Canvas
+document.getElementById("clearBtn").addEventListener("click", () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    localStorage.removeItem("savedSignature"); // Clear saved signature from localStorage
 });
 
-document.getElementById('saveBtn').addEventListener('click', () => {
-    const dataURL = canvas.toDataURL('image/png');
-    const link = document.createElement('a');
-    link.href = dataURL;
-    link.download = 'signature.png';
+// Save & Download Canvas
+document.getElementById("saveBtn").addEventListener("click", () => {
+    const signatureData = canvas.toDataURL(); // Get canvas as image data
+    localStorage.setItem("savedSignature", signatureData); // Save signature to localStorage
+
+    const link = document.createElement("a");
+    link.download = "signature.png";
+    link.href = signatureData;
     link.click();
 });
 
-document.getElementById('retrieveBtn').addEventListener('click', () => {
-    const savedImage = localStorage.getItem('savedSignature');
-    if (savedImage) {
+// Retrieve Saved Signature
+document.getElementById("retrieveBtn").addEventListener("click", () => {
+    const savedSignature = localStorage.getItem("savedSignature");
+    if (savedSignature) {
         const img = new Image();
-        img.src = savedImage;
+        img.src = savedSignature;
         img.onload = () => {
-            ctx.drawImage(img, 0, 0);
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear current canvas
+            ctx.drawImage(img, 0, 0); // Draw the saved signature on the canvas
         };
     } else {
-        alert('No saved signature found!');
+        alert("No saved signature found! Draw and save a signature first.");
     }
 });
-
-document.getElementById('undoBtn').addEventListener('click', undo);
 
 // Change canvas background color
 document.getElementById('canvasBgColor').addEventListener('change', (e) => {
     canvas.style.backgroundColor = e.target.value;
 });
+
+// Mouse events for drawing
+canvas.addEventListener('mousedown', (e) => {
+    saveState(); // Save state before starting a new drawing
+    startPosition(e);
+});
+canvas.addEventListener('mouseup', endPosition);
+canvas.addEventListener('mousemove', draw);
+
+// Undo action
+document.getElementById('undoBtn').addEventListener('click', undo);
