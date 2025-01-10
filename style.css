@@ -209,3 +209,52 @@ button {
 .alink {
     color: #fff;
 }
+
+/* Add this section for Dark Theme */
+body.dark {
+    background-image: url('https://wallpapers.com/images/hd/dark-background.jpg'); /* Change to a dark background */
+    color: #fff;
+}
+
+.container.dark {
+    background: rgba(0, 0, 0, 0.9); /* Darker background for the container */
+}
+
+.navbar.dark {
+    background: rgba(0, 0, 0, 0.8); /* Darker navbar */
+}
+
+.footer.dark {
+    background: rgba(0, 0, 0, 0.8); /* Darker footer */
+}
+
+input.dark {
+    background: rgba(255, 255, 255, 0.1); /* Darker input fields */
+    color: #fff;
+    border: 2px solid #fff; /* Keep border white for visibility */
+}
+
+button.dark {
+    background-color: #f7ca00; /* Keep button color consistent */
+    color: #fff;
+}
+
+button.dark:hover {
+    background-color: #ffb400; /* Keep hover effect consistent */
+}
+
+/* Add this section for Dark Theme */
+
+/* Add this section for positioning the theme toggle */
+.theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000; /* Ensure it appears above other elements */
+    background: rgba(0, 0, 0, 0.5); /* Optional: background for better visibility */
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff; /* Text color */
+}
+
+/* Add this section for positioning the theme toggle */
