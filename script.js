@@ -121,3 +121,23 @@ canvas.addEventListener('mousemove', draw);
 
 // Undo action
 document.getElementById('undoBtn').addEventListener('click', undo);
+
+// Add this function to handle theme switching
+document.getElementById('themeSwitch').addEventListener('change', (e) => {
+    const body = document.body;
+    const container = document.querySelector('.container');
+    const navbar = document.querySelector('.navbar');
+    const footer = document.querySelector('.footer');
+
+    if (e.target.checked) {
+        body.classList.add('dark');
+        container.classList.add('dark');
+        navbar.classList.add('dark');
+        footer.classList.add('dark');
+    } else {
+        body.classList.remove('dark');
+        container.classList.remove('dark');
+        navbar.classList.remove('dark');
+        footer.classList.remove('dark');
+    }
+});
