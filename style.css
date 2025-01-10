@@ -13,7 +13,7 @@ body {
 }
 
 .container {
-    background: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -25,20 +25,23 @@ body {
     margin-bottom: 20px;
 }
 
-.controls label, .controls input, .controls select {
+.controls label,
+.controls input,
+.controls select {
     margin-right: 10px;
 }
 
 .signature-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center;     /* Centers content vertically */
 }
+
 
 .signature-area {
     border: 2px solid #fff;
     background-color: #fff;
-    margin-right: 20px;
+    margin-right: 20px;  /* Spacing between signature area and GIF (if present) */
 }
 
 #signatureCanvas {
@@ -52,7 +55,7 @@ body {
 }
 
 .gif-container img {
-    width: 100px;
+    max-width: 100px; /* Use max-width for responsive sizing */
     height: auto;
 }
 
@@ -68,26 +71,27 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    color: #fff; /* Default text color to white */
 }
 
 #clearBtn {
     background-color: #8d7373;
-    color: #fff;
 }
 
 #undoBtn {
-    background-color: #d6a584;
-    color: #fff;
+    background-color: #d6a584; 
 }
-
 
 #saveBtn {
     background-color: #8da298;
-    color: #fff;
 }
 
 #retrieveBtn {
     background-color: #d69584;
-    color: #fff;
 }
+
+#cropBtn { /* Style for the crop button */
+    background-color: #7a698d;
+}
+
 
