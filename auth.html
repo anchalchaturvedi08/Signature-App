@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Signature App</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/logo.svg" alt="Logo">
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="login-container">
+            <h1 class="login-heading">Login</h1>
+            <div class="auth-container">
+                <div class="form-container login-form">
+                    <form id="auth-form" onsubmit="javascript:authentication(event);return false;">
+                        <label for="authName" id="nameLabel" style="display:none;">Full Name</label>
+                        <input type="text" id="authName" placeholder="Enter your full name" style="display: none;">
+                        <label for="authEmail" id="emailLabel" >Email</label>
+                        <input type="email" id="authEmail"  placeholder="Enter your email" required>
+                        <label for="authPassword">Password</label>
+                        <input type="password" id="authPassword" placeholder="Enter your password" required>
+                        <button type="submit" id="auth-btn-clicked">Login</button>
+                    </form>
+                    <div id="signup-redirect">
+                        <p>Don't have an account?
+                        <div class="clickable" onclick="toggleForm('login')">Sign up</div>
+                    </div>
+                    <div id="login-redirect" style="display: none;">
+                        <p>Already have an account?
+                        <div class="clickable" onclick="toggleForm('signup')">Login</div>        
+                    </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="name">
+            <p><i>Made By</i> <a class="alink" href="https://github.com/anchalchaturvedi08"><i>Anchal Chaturvedi</i></a>
+            </p>
+        </div>
+        <p>&copy; 2025 <i>Signature App</i> | All rights reserved.</p>
+        <div class="connect">
+            <p>Connect With Us:</p>
+            <div class="social-icons">
+                <a href="https://twitter.com" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter">
+                </a>
+                <a href="https://instagram.com" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram">
+                </a>
+                <a href="https://linkedin.com" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" alt="LinkedIn">
+                </a>
+                <a href="https://github.com/anchalchaturvedi08" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

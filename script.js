@@ -121,3 +121,74 @@ canvas.addEventListener('mousemove', draw);
 
 // Undo action
 document.getElementById('undoBtn').addEventListener('click', undo);
+
+
+//Auth functionalities
+
+function authentication(event) {
+    console.log('Auth button clicked');
+    event.preventDefault(); 
+
+    const authName = document.getElementById('authName');
+    const authEmail = document.getElementById('authEmail');
+    const authPassword = document.getElementById('authPassword');
+
+    if (!authName.value) { 
+        login(authEmail.value, authPassword.value);
+    } else {
+        register(authName.value, authEmail.value, authPassword.value);
+    }
+}
+
+function login(username, password) {
+    if (username == 'admin@gmail.com' && password == 'admin') {
+        window.location.href='/index.html'
+    }
+    var user = JSON.parse(localStorage.getItem(username))
+
+    var decodedPassword = user.password
+
+    if (password == decodedPassword) {
+        window.location.href='/index.html'
+    } else {
+        alert("Wrong password, Please try again");
+    }
+}
+
+function register(username, email, password) {
+    console.log('Register');
+
+    const user = {username, email, password};
+
+    localStorage.setItem(email, JSON.stringify(user));
+    document.getElementById('authName').value = ""
+    toggleForm('register');
+}
+
+function toggleForm(form) {
+    console.log('On Clicked');
+    const nameLabel = document.getElementById('nameLabel');
+    const authName = document.getElementById('authName');
+    const signupRedirect = document.getElementById('signup-redirect');
+    const loginRedirect = document.getElementById('login-redirect');
+    const loginHeading = document.querySelector('.login-heading');
+    const authBtn = document.getElementById('auth-btn-clicked');
+
+    if (form === 'login') {
+        nameLabel.style.display = 'block';
+        authName.style.display = 'block';
+        authName.setAttribute("required", "");
+        signupRedirect.style.display = 'none';
+        loginRedirect.style.display = 'block';
+        loginHeading.textContent = 'Sign Up';
+        authBtn.innerHTML = 'Sign Up';
+    } else {
+        nameLabel.style.display = 'none';
+        authName.style.display = 'none';
+        authName.removeAttribute("required");
+        signupRedirect.style.display = 'block';
+        loginRedirect.style.display = 'none';
+        loginHeading.textContent = 'Login';
+        authBtn.innerHTML = 'Login';
+    }
+}
