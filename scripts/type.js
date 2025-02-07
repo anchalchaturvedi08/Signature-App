@@ -15,51 +15,92 @@ const fonts = [
     { name: 'Allura', class: 'allura-regular', family: '"Allura", cursive' }
 ];
 
+// Style configurations
+const strokeStyles = [
+    { name: 'Normal', value: 'normal' },
+    { name: 'Bold', value: 'bold' },
+    { name: 'Italic', value: 'italic' },
+    { name: 'Bold Italic', value: 'bold italic' }
+];
+
+// Function to create style controls
+function createStyleControls() {
+    const controls = document.createElement('div');
+    controls.classList.add('style-controls');
+
+    // Style selector (kept for font styles)
+    const styleDiv = document.createElement('div');
+    styleDiv.classList.add('control-group');
+    styleDiv.innerHTML = '<label>Style:</label>';
+    const styleSelect = document.createElement('select');
+    strokeStyles.forEach(style => {
+        const option = document.createElement('option');
+        option.value = style.value;
+        option.textContent = style.name;
+        styleSelect.appendChild(option);
+    });
+    styleDiv.appendChild(styleSelect);
+
+    controls.appendChild(styleDiv);
+
+    return {
+        container: controls,
+        getStyles: () => ({
+            style: styleSelect.value
+        })
+    };
+}
+
+let styleControls;
+
 // Function to generate font styles and display them as downloadable images
 function generateFonts() {
-    // Get the user input text for the font styles
     const textInput = document.getElementById('textInput').value;
-    // Reference the container element where font designs will be displayed
     const container = document.getElementById('fontStylesContainer');
-    // Clear the previous font design elements before generating new ones
-    container.innerHTML = '';  
+    container.innerHTML = ''; // Clear previous fonts
 
-    // Iterate over each font and create the respective design
+    // Create style controls if they don't exist
+    if (!styleControls) {
+        styleControls = createStyleControls();
+        container.appendChild(styleControls.container);
+    }
+
     fonts.forEach((font, index) => {
-        // Create a new div element to hold each font design
         const fontDesignDiv = document.createElement('div');
         fontDesignDiv.classList.add('fontDesign');
         
-        // Create a canvas element for rendering the text in the selected font
         const canvas = document.createElement('canvas');
-        canvas.width = 300;  // Set canvas width
-        canvas.height = 100; // Set canvas height
-        const ctx = canvas.getContext('2d');  // Get the canvas 2D drawing context
-        
-        // Apply the font-family and font size to the canvas context
-        ctx.font = `40px ${font.family}`;
-        ctx.fillStyle = 'rgb(65, 65, 65)'; // Set text color
-        ctx.fillText(textInput, 10, 50);  // Draw the input text on the canvas
+        canvas.width = 300;
+        canvas.height = 100;
+        const ctx = canvas.getContext('2d');
 
-        // Append the canvas element to the font design div
+        // Get current styles (only style is included now)
+        const styles = styleControls.getStyles();
+        
+        // Apply text styles (only style is used)
+        ctx.font = `${styles.style} 40px ${font.family}`;  // Fixed size (40px)
+        ctx.fillStyle = '#000000';  // Default color (black)
+        ctx.fillText(textInput, 10, 50); // Position text
+
         fontDesignDiv.appendChild(canvas);
 
-        // Create a download button for the user to save the font design as an image
         const downloadBtn = document.createElement('button');
         downloadBtn.classList.add('downloadBtn');
-        downloadBtn.textContent = 'Download';  // Button text
+        downloadBtn.textContent = 'Download';
 
-        // Add click event to the download button to trigger the download process
         downloadBtn.addEventListener('click', function () {
-            const link = document.createElement('a'); // Create an invisible anchor link
-            link.download = `fontDesign-${index}.png`; // Set the filename for the image download
-            link.href = canvas.toDataURL();  // Convert the canvas to a base64 image
-            link.click();  // Trigger the click event to initiate download
+            const link = document.createElement('a');
+            link.download = `fontDesign-${index}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
         });
         
-        // Append the download button to the font design div
         fontDesignDiv.appendChild(downloadBtn);
-        // Append the font design div to the container for display
         container.appendChild(fontDesignDiv);
     });
 }
+
+// Initial color button activation (removed as there is no color option now)
+document.addEventListener('DOMContentLoaded', () => {
+    generateFonts();
+});

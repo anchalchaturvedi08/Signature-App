@@ -274,3 +274,91 @@ button:hover {
     font-size: 16px;
     width: 300px;
 }
+
+/* Style Controls */
+.style-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-group label {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+.control-group select {
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background: white;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+}
+
+.control-group select:hover {
+    border-color: #00b8d4;
+}
+
+/* Font Design Container */
+#fontStylesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.fontDesign {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    transition: transform 0.2s ease;
+}
+
+.fontDesign:hover {
+    transform: translateY(-2px);
+}
+
+.fontDesign canvas {
+    border-radius: 5px;
+    background: transparent;
+}
+
+.downloadBtn {
+    background: #00b8d4;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s ease;
+}
+
+.downloadBtn:hover {
+    background: #0095a8;
+}
