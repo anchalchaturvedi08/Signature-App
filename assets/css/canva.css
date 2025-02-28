@@ -261,6 +261,7 @@ button:hover {
 /* ===========================
    Footer Styling
 ============================= */
+/*
 .footer {
     display: flex;
     justify-content: space-between;
@@ -297,9 +298,9 @@ button:hover {
 .footer .social-icons a img:hover {
     transform: scale(1.2);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-}
+}*/
 
-/* Footer Credits */
+/* Footer Credits 
 .name p {
     font-size: 14px;
 }
@@ -311,6 +312,169 @@ button:hover {
 .alink:hover {
     text-decoration: underline;
 }
+*/
+/* ===========================
+   new footer
+============================= */
+/* footer */
+    
+.footer-logo img{
+    width: px;
+    height: 30px;
+    transform: scale(1.5);
+    margin-right: -32px;
+    margin-bottom: 9px;
+    cursor: pointer
+
+}
+.footer-logo{
+    display: flex;
+    padding-bottom: 10px;
+}
+.footer-body{
+display: grid;
+justify-content: center;
+align-content: end;
+padding: 25px;
+}
+
+footer{
+position: relative;
+width:100%;
+height: auto;
+background: linear-gradient(45deg, #00b8d4, #0077b6);
+
+}
+.footer-container{
+width:100%;
+display: grid;
+grid-template-columns: 2fr 1fr 1fr 1fr;
+grid-gap:20px;
+padding: 10px;
+
+
+}
+.footer-container .sec h2{
+position: relative;
+color: black;
+font-weight: 600;
+margin-bottom: 15px;
+text-align: left;
+
+}
+.footer-container .sec p{
+color:white; 
+text-align: justify;
+
+
+}
+
+/* quick links and support combine*/
+.footer-container .quicklinks{
+position: relative;
+
+}
+.footer-container .sec ul li a{
+ color: white;
+}
+.footer-container .quicklinks ul li{
+list-style: none;
+text-align: justify;
+width:250px
+}
+.footer-container .quicklinks ul li a{
+text-decoration: none;
+margin-bottom: 2px;
+display: inline-block;
+padding: 1px 2px 1px 2px;
+}
+.footer-container .sec ul li a:hover{
+position: relative;
+left:8px;
+}
+
+/* social */
+.footer-container .social{
+margin-top: 20px;
+display: grid;
+grid-template-columns: repeat(5,50px);
+width:250px;
+
+
+}
+.footer-container .social{
+list-style: none;
+}
+.footer-container .social li a{
+display:inline-block;
+width: 3px;
+height: 36px;
+padding: 1px;
+display: grid;
+align-content: center;
+text-decoration: none;
+}
+.footer-container .social li a i{
+font-size: 25px;
+position: relative;
+left:5px;
+}
+
+.social li .fa-facebook-f{
+color: rgb(199, 219, 245); 
+
+}
+.social li .fa-instagram{
+color:rgb(226, 22, 134);
+
+}
+.social li .fa-github{
+color:rgb(13, 11, 12);
+}
+.social li .fa-linkedin{
+color:rgb(221, 226, 230);
+}
+.social li .fa-x-twitter{
+color:rgb(13, 11, 12);
+}
+
+
+/*  copy rights*/
+.copyrights{
+text-align: center;
+width:100%;
+padding:10px;
+color: #000;
+
+}
+.alink{
+    color:white;
+}
+/* media */
+@media(max-width:991px){
+footer{
+padding: 40px;
+}
+.footer-container{
+width: 100%;
+display: grid;
+grid-template-columns: repeat(2,1fr);
+grid-gap: 20px;
+}
+
+}
+
+@media(max-width:768px){
+.footer-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    grid-gap: 20px;
+    
+   }
+   
+}
+
 
 /* ===========================
    Button Styling
