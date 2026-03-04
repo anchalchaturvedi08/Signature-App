@@ -40,10 +40,45 @@ eraserSizeInput.addEventListener('input',(e)=>{
 
 // Set up the canvas for drawing
 function setupCanvas() {
-    canvas.addEventListener('mousedown', startDrawing);  // Start drawing when mouse is pressed
-    canvas.addEventListener('mousemove', draw);  // Track mouse movements to draw
-    canvas.addEventListener('mouseup', stopDrawing);  // Stop drawing when mouse is released
-    canvas.addEventListener('mouseout', stopDrawing);  // Stop drawing when mouse leaves the canvas
+    // Mouse events
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mousemove', e => {
+        if (isEraserActive) drawCursor(e); 
+    });
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
+    
+    // Touch events for mobile/tablets
+    canvas.addEventListener('touchstart', handleTouchStart, { passive: false });
+    canvas.addEventListener('touchmove', handleTouchMove, { passive: false });
+    canvas.addEventListener('touchend', stopDrawing);
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height); 
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+}
+
+function getTouchPos(canvasDom, touchEvent) {
+    const rect = canvasDom.getBoundingClientRect();
+    return {
+        x: touchEvent.touches[0].clientX - rect.left,
+        y: touchEvent.touches[0].clientY - rect.top
+    };
+}
+
+function handleTouchStart(e) {
+    e.preventDefault();
+    const pos = getTouchPos(canvas, e);
+    drawing = true;
+    [lastX, lastY] = [pos.x, pos.y];
+}
+
+function handleTouchMove(e) {
+    e.preventDefault();
+    if (!drawing) return;
+    const pos = getTouchPos(canvas, e);
+    drawLine(pos.x, pos.y);
 }
 
 // Start drawing when mouse is pressed
@@ -73,39 +108,31 @@ function stopDrawing() {
     ctx.beginPath();  // Begin a new path to prevent connecting to previous paths
 }
 
-function setupCanvas() {
-    canvas.addEventListener('mousedown', startDrawing); 
-    canvas.addEventListener('mousemove', draw); 
-    canvas.addEventListener('mousemove', e => {
-        if (isEraserActive) drawCursor(e); 
-    });
-    canvas.addEventListener('mouseup', stopDrawing); 
-    canvas.addEventListener('mouseout', stopDrawing); 
-    ctx.clearRect(0, 0, canvas.width, canvas.height); 
-    ctx.fillStyle = 'rgba(0,0,0,0)';
+// Draw on the canvas (Mouse)
+function draw(e) {
+    if (!drawing) return;
+    drawLine(e.offsetX, e.offsetY);
 }
 
-// Draw on the canvas
-function draw(e) {
-    if (!drawing) return;  // Don't draw if not in drawing mode
-
-    ctx.lineWidth = isEraserActive ? eraserSize : lineWidth; // Set line width
-    ctx.lineCap = 'round';  // Set line cap style
+function drawLine(x, y) {
+    ctx.lineWidth = isEraserActive ? eraserSize : lineWidth;
     
     if (isEraserActive) {
-        ctx.globalCompositeOperation='destination-out';
+        ctx.globalCompositeOperation = 'destination-out';
     } else {
-        ctx.globalCompositeOperation='source-over'; 
-        ctx.strokeStyle=currentColor; 
+        ctx.globalCompositeOperation = 'source-over'; 
+        ctx.strokeStyle = currentColor; 
     }
 
-    ctx.beginPath();  // Begin a new path
-    ctx.moveTo(lastX, lastY);  // Move to the last position
-    ctx.lineTo(e.offsetX, e.offsetY);  // Draw line to current position
-    ctx.stroke();  // Apply the stroke
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(x, y);
+    ctx.stroke();
 
-    [lastX, lastY] = [e.offsetX, e.offsetY];  // Update last position
+    [lastX, lastY] = [x, y];
 }
+
+
 
 // Toggle eraser functionality
 eraserBtn.addEventListener('click', () => {

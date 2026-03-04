@@ -22,24 +22,28 @@ function generateFonts() {
     // Reference the container element where font designs will be displayed
     const container = document.getElementById('fontStylesContainer');
     // Clear the previous font design elements before generating new ones
-    container.innerHTML = '';  
+    container.innerHTML = '';
 
     // Iterate over each font and create the respective design
     fonts.forEach((font, index) => {
         // Create a new div element to hold each font design
         const fontDesignDiv = document.createElement('div');
         fontDesignDiv.classList.add('fontDesign');
-        
+
         // Create a canvas element for rendering the text in the selected font
         const canvas = document.createElement('canvas');
-        canvas.width = 300;  // Set canvas width
-        canvas.height = 100; // Set canvas height
+        canvas.width = 400;  // Set canvas width
+        canvas.height = 150; // Set canvas height
         const ctx = canvas.getContext('2d');  // Get the canvas 2D drawing context
-        
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Ensure transparent background
+
         // Apply the font-family and font size to the canvas context
-        ctx.font = `40px ${font.family}`;
-        ctx.fillStyle = 'rgb(65, 65, 65)'; // Set text color
-        ctx.fillText(textInput, 10, 50);  // Draw the input text on the canvas
+        ctx.font = `60px ${font.family}`;
+        ctx.fillStyle = '#1e293b'; // Set text color to deep slate
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(textInput, canvas.width / 2, canvas.height / 2);  // Draw the input text on the canvas
 
         // Append the canvas element to the font design div
         fontDesignDiv.appendChild(canvas);
@@ -56,7 +60,7 @@ function generateFonts() {
             link.href = canvas.toDataURL();  // Convert the canvas to a base64 image
             link.click();  // Trigger the click event to initiate download
         });
-        
+
         // Append the download button to the font design div
         fontDesignDiv.appendChild(downloadBtn);
         // Append the font design div to the container for display

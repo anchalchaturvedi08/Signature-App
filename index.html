@@ -7,22 +7,25 @@
     <title>QuickSign - Easy Digital Signature Maker</title>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
-    <!-- Linking external stylesheets -->
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="assets/css/chatbot.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 
 </head>
 
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="brand">
+        <a href="index.html" class="brand">
             <img src="logo.png" alt="QuickSign Logo" class="logo-img">
-            <div class="logo">QuickSign</div>
-        </div>
+            <span class="logo">QuickSign</span>
+        </a>
         <ul class="nav-links">
             <li><a href="/index.html">Home</a></li>
             <li><a href="#pricing">Pricing</a></li>
@@ -36,21 +39,27 @@
 
     <!-- Signature Creation Section -->
     <section id="signature-creation">
-        <h2>Design Your Electronic Signature</h2>
+        <h2>Design Your <span class="gradient-text">Electronic Signature</span></h2>
+        <p class="hero-subtitle">Experience a new standard of digital signing with our premium, secure, and beautiful
+            tools tailored for professionals.</p>
         <div class="signature-options">
             <!-- Option for drawing a signature -->
             <div class="option">
-                <i class="fa-solid fa-pen-nib" style="font-size: 48px; color: #0077b6;"></i>
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-pen-nib"></i>
+                </div>
                 <h3>Draw Your Signature</h3>
-                <p>Create a signature by drawing it with your touchpad, mouse, phone, or tablet.</p>
-                <button class="option-btn" onclick="window.location.href='pages/canva.html'">Draw Signature</button>
+                <p>Create a stunning signature by drawing it on your touchpad, mouse, or tablet.</p>
+                <button class="primary-btn" onclick="window.location.href='pages/canva.html'">Draw Signature</button>
             </div>
             <!-- Option for typing a signature -->
             <div class="option">
-                <i class="fa-solid fa-keyboard" style="font-size: 48px; color: #0077b6;"></i>
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-keyboard"></i>
+                </div>
                 <h3>Type Your Signature</h3>
-                <p>Simply type your name and choose from a selection of beautiful handwriting fonts.</p>
-                <button class="option-btn" onclick="window.location.href='pages/type.html'">Type Signature</button>
+                <p>Simply type your name and pick from a selection of premium typography styles.</p>
+                <button class="primary-btn" onclick="window.location.href='pages/type.html'">Type Signature</button>
             </div>
         </div>
     </section>
@@ -59,14 +68,15 @@
     <!-- Uncomment and complete this section if About Us details are needed -->
 
     <section id="about">
-        <h2>About QuickSign</h2>
-        <p>QuickSign simplifies digital signatures with secure, customizable, and seamless solutions.</p>
+        <h2 class="section-title">About <span class="gradient-text">QuickSign</span></h2>
+        <p class="section-subtitle">QuickSign simplifies digital signatures with secure, customizable, and seamlessly
+            elegant solutions.</p>
         <div class="about-team">
             <div class="team-member">
-                <img src="https://avatars.githubusercontent.com/u/129603987?v=4" alt="Founder" style="width: 125px;">
+                <img src="https://avatars.githubusercontent.com/u/129603987?v=4" alt="Founder">
                 <h3>Anchal Chaturvedi</h3>
-                <p>Founder & CEO</p>
-                <p>Passionate about using technology to make digital signing effortless and efficient.</p>
+                <p class="role">Founder & CEO</p>
+                <p>Passionate about using technology to make digital signing an effortless and powerful experience.</p>
             </div>
         </div>
     </section>
@@ -74,79 +84,88 @@
 
     <!-- Pricing Section -->
     <section id="pricing">
-        <h2>Our Pricing Plans</h2>
+        <h2 class="section-title">Our <span class="gradient-text">Pricing Plans</span></h2>
+        <p class="section-subtitle">Choose the plan that fits your professional needs perfectly.</p>
         <div class="pricing-container">
             <!-- Basic Plan -->
             <div class="pricing-card">
-                <h3>Basic Plan</h3>
-                <p class="price">$0</p>
+                <h3>Basic</h3>
+                <p class="price">$0<span>/mo</span></p>
                 <ul>
-                    <li>Unlimited Signature Creations</li>
-                    <li>Access to Standard Fonts</li>
-                    <li>Basic Customization</li>
+                    <li><i class="fa-solid fa-check"></i> Unlimited Signatures</li>
+                    <li><i class="fa-solid fa-check"></i> Standard Fonts</li>
+                    <li><i class="fa-solid fa-check"></i> Basic Customization</li>
                 </ul>
-                <button class="option-btn" onclick="window.location.href='signup.html'">Get Started</button>
+                <button class="primary-btn" onclick="window.location.href='signup.html'">Get Started</button>
             </div>
             <!-- Premium Plan -->
-            <div class="pricing-card">
-                <h3>Premium Plan</h3>
-                <p class="price">$9.99/month</p>
+            <div class="pricing-card popular">
+                <div class="popular-badge">Most Popular</div>
+                <h3>Premium</h3>
+                <p class="price">$9.99<span>/mo</span></p>
                 <ul>
-                    <li>Unlimited Signature Creations</li>
-                    <li>Premium Fonts & Styles</li>
-                    <li>Advanced Customization</li>
-                    <li>Priority Support</li>
+                    <li><i class="fa-solid fa-check"></i> All Basic Features</li>
+                    <li><i class="fa-solid fa-check"></i> Premium Fonts & Styles</li>
+                    <li><i class="fa-solid fa-check"></i> Advanced Customization</li>
+                    <li><i class="fa-solid fa-check"></i> Priority Support</li>
                 </ul>
-                <button class="option-btn" onclick="window.location.href='signup.html'">Get Started</button>
+                <button class="primary-btn" onclick="window.location.href='signup.html'">Get Started</button>
             </div>
             <!-- Business Plan -->
             <div class="pricing-card">
-                <h3>Business Plan</h3>
-                <p class="price">$29.99/month</p>
+                <h3>Business</h3>
+                <p class="price">$29.99<span>/mo</span></p>
                 <ul>
-                    <li>All Features in Premium Plan</li>
-                    <li>Team Management</li>
-                    <li>API Access</li>
-                    <li>Custom Branding</li>
+                    <li><i class="fa-solid fa-check"></i> All Premium Features</li>
+                    <li><i class="fa-solid fa-check"></i> Team Management</li>
+                    <li><i class="fa-solid fa-check"></i> API Access</li>
+                    <li><i class="fa-solid fa-check"></i> Custom Branding</li>
                 </ul>
-                <button class="option-btn" onclick="window.location.href='signup.html'">Get Started</button>
+                <button class="primary-btn" onclick="window.location.href='signup.html'">Get Started</button>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
-        <h2>Contact Us</h2>
-        <p>If you have any questions or need support, feel free to reach out to us. We're here to help!</p>
+        <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+        <p class="section-subtitle">We'd love to hear from you. Fill out the form below or reach us directly.</p>
         <div class="contact-container">
             <!-- Contact Information -->
             <div class="contact-info">
-                <h3>QuickSign</h3>
-                <p>Email: <a href="mailto:support@quicksign.com">support@quicksign.com</a></p>
-                <p>Phone: +1 234 567 890</p>
-                <p>Address: 123 QuickSign St, Tech City, USA</p>
+                <h3>Contact Information</h3>
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <p><a href="mailto:support@quicksign.com">support@quicksign.com</a></p>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <p>+1 234 567 890</p>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p>123 QuickSign St, Tech City, USA</p>
+                </div>
             </div>
             <!-- Contact Form -->
             <form id="contact-form" method="POST">
                 <div class="form-group">
                     <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Your Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" placeholder="john@example.com" required>
                 </div>
                 <div class="form-group">
                     <label for="message">Your Message</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
+                    <textarea id="message" name="message" rows="5" placeholder="How can we help you?"
+                        required></textarea>
                 </div>
-                <button type="submit" class="option-btn">Send Message</button>
+                <button type="submit" class="primary-btn">Send Message</button>
             </form>
         </div>
     </section>
-
-    <script src="https://cdn.botpress.cloud/webchat/v2.4/inject.js"></script>
-    <script src="https://files.bpcontent.cloud/2024/10/13/06/20241013063603-2RD31DW1.js"></script>
 
     <!-- Footer -->
     <footer>
@@ -207,14 +226,19 @@
         </div>
         </div>
 
-        <!---copy rights---->
         <div class="copyrights">
             <p>&copy; 2025 <i>QuickSign</i> | All rights reserved.</p>
-            <!-- Creator Credit -->
-            <p><i>Made By</i> <a class="alink" href="https://github.com/anchalchaturvedi08"><i>Anchal Chaturvedi</i></a>
-            </p>
+            <p><i>Made By</i> <a class="alink" href="https://github.com/anchalchaturvedi08">Anchal Chaturvedi</a></p>
         </div>
     </footer>
+    <script src="scripts/chatbot.js"></script>
+    <script>
+        const user = localStorage.getItem("currentUser");
+
+        if (!user) {
+            window.location.href = "pages/login.html";
+        }
+    </script>
 </body>
 
 </html>

@@ -1,245 +1,123 @@
-/* General Reset for Consistent Layout */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+/* ===========================
+   Auth Pages Specific Styling
+============================= */
 
-/* Body Styling */
 body {
-    background-color: #f8f9fa; /* Light background color */
-    background-size: cover; /* Cover the entire screen */
-    background-position: center;
-    color: #fff; /* Text color */
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: 100vh; /* Full height */
-    text-align: center; /* Center the text */
+    min-height: 100vh;
 }
 
-/* Container for Form */
-.container {
-    background: #ffffff; /* White background for the form */
-    padding: 40px;
-    border-radius: 8px;
+.auth-wrapper {
+    background: var(--glass-bg);
+    padding: 50px 40px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: var(--glass-shadow);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     text-align: center;
-    width: 100%;
-    max-width: 380px; /* Maximum width for the form */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow effect */
+    position: relative;
+    z-index: 10;
+    margin: auto;
+    /* Vertically center combined with flex body */
+    margin-top: 140px;
+    margin-bottom: 80px;
 }
 
-/* Heading Styles for Login/Sign Up */
-.login-heading,
-.signup-heading {
-    font-size: 36px;
-    font-weight: 700;
-    color: #00b8d4; /* Teal color for heading */
-    margin-bottom: 20px;
-    text-transform: none;
-    letter-spacing: 1px;
+.auth-heading {
+    font-size: 2.2rem;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    font-family: var(--font-heading);
 }
 
-/* Label Styling for Form Fields */
-label {
-    display: block;
+.auth-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
     text-align: left;
+}
+
+.input-group label {
+    display: block;
     font-weight: 500;
-    margin-bottom: 5px;
     font-size: 14px;
-    color: #000000; /* Black color for labels */
-    margin-left: 10px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    font-family: var(--font-body);
 }
 
-/* Input Field Styling */
-input {
+.input-group input {
     width: 100%;
-    padding: 12px;
-    border: 2px solid #e0e0e0;
-    border-radius: 5px;
-    margin-bottom: 20px;
+    padding: 14px 16px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--text-primary);
+    font-size: 15px;
+    font-family: var(--font-body);
+    transition: all var(--transition-fast);
     outline: none;
-    font-size: 14px;
-    background: #fafafa; /* Light grey background */
-    color: #fff;
-    transition: border-color 0.3s ease-in-out;
 }
 
-/* Input Focus Effect */
-input:focus {
-    border-color: #00b8d4; /* Teal border on focus */
+.input-group input:focus {
+    border-color: #6366f1;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
 }
 
-/* Paragraph for Form Links */
-.form-p {
-    color: #000000;
-    font-size: 14px;
-}
-
-/* Link Styling for Sign Up / Login Links */
-.form-a {
-    color: #000000;
-    font-size: 14px;
-}
-
-/* Button Styling for Form Submit */
-button {
-    padding: 12px 30px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    background-color: #00b8d4; /* Teal background */
-    color: white;
-    transition: all 0.3s ease;
-}
-
-/* Button Hover Effect */
-button:hover {
-    background-color: #008c91; /* Darker teal on hover */
-}
-
-/* Auth Button Styling */
 .auth-btn {
     width: 100%;
     padding: 14px;
-    background: #00b8d4; /* Teal background */
+    margin-top: 10px;
+    border-radius: 12px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 16px;
     color: white;
-    font-size: 18px;
+    background: var(--primary-gradient);
     border: none;
-    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: all var(--transition-smooth);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
 }
 
-/* Hover Effect for Auth Button */
 .auth-btn:hover {
-    background: #008c91;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: scale(1.05); /* Slight scale effect on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
 }
 
-/* Link Styles for Paragraphs and Anchors */
-p {
-    margin-top: 15px;
-    color: #ffffff;
+.form-p {
+    margin-top: 25px;
+    font-size: 14px;
+    color: var(--text-secondary);
 }
 
-a {
-    color: #ffffff;
-    text-decoration: none;
+.form-a {
+    color: #6366f1;
+    font-weight: 600;
 }
 
-a:hover {
-    text-decoration: underline; /* Underline effect on hover */
-}
-
-/* Navbar Styling */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background: linear-gradient(45deg, #00b8d4, #0077b6);
-    position: fixed;
-    width: 100vw;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Logo Styling */
-.logo {
-    font-size: 26px;
-    font-weight: bold;
-    margin-left: 45px;
-    cursor: pointer;
-}
-
-.logo img {
-    height: 50px;
-}
-
-/* Navigation Links Styling */
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-}
-
-.nav-links a {
-    color: white;
-    margin: 0 15px;
-    font-size: 16px;
-    text-decoration: none;
-}
-
-/* Hover Effect on Navigation Links */
-.nav-links a:hover {
+.form-a:hover {
+    color: #4f46e5;
     text-decoration: underline;
 }
 
-/* Footer Styling */
-.footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: linear-gradient(45deg, #00b8d4, #0077b6);
-    text-align: center;
-    position: fixed;
-    bottom: 0;
+/* Specific footer adjustment for auth pages if needed */
+footer {
     width: 100%;
-    color: #fff;
-    font-size: 14px;
-}
-
-.footer .connect {
-    margin-bottom: 10px;
-    margin-right: 50px;
-}
-
-.footer .connect p {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.footer .social-icons {
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    gap: 15px;
-}
-
-.footer .social-icons a img {
-    width: 20px;
-    height: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.footer .social-icons a img:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Hover effect on icons */
-}
-
-.name {
-    margin-left: 50px;
-}
-
-.name p {
-    font-size: 14px;
-}
-
-.alink {
-    color: #fffefe;
-}
-
-.alink:hover {
-    text-decoration: underline;
-}
-
-.footer p {
-    font-size: 14px;
+    margin-top: auto;
 }

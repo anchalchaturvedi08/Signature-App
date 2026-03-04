@@ -6,44 +6,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuickSign - Easy Digital Signature Maker</title>
-    
+
     <!-- Favicon for the Browser Tab -->
     <link rel="shortcut icon" href="../assets/favicon/favicon.png" type="image/x-icon">
 
     <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../assets/css/canva.css">
 
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-
-    <!-- Google Fonts for Stylish Text -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <!-- Additional Handwriting Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Aguafina+Script&family=Allura&family=Arizonia&family=Bad+Script&family=Bilbo+Swash+Caps&family=Cedarville+Cursive&family=Dancing+Script:wght@400..700&family=Euphoria+Script&family=Satisfy&family=Shadows+Into+Light+Two&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Aguafina+Script&family=Allura&family=Arizonia&family=Bad+Script&family=Bilbo+Swash+Caps&family=Cedarville+Cursive&family=Dancing+Script:wght@400..700&family=Euphoria+Script&family=Satisfy&family=Shadows+Into+Light+Two&display=swap"
+        rel="stylesheet">
+
     <!-- Signature Pad Library -->
     <script src="https://cdn.jsdelivr.net/npm/signature_pad"></script>
 </head>
 
 <body>
-    <!-- Navbar Section -->
+    <!-- Navbar -->
     <nav class="navbar">
-        <!-- Brand Logo -->
-        <div class="logo">QuickSign</div>
-
-        <!-- Navigation Links -->
+        <a href="../index.html" class="brand">
+            <img src="../logo.png" alt="QuickSign Logo" class="logo-img">
+            <span class="logo">QuickSign</span>
+        </a>
         <ul class="nav-links">
             <li><a href="../index.html">Home</a></li>
             <li><a href="../index.html#pricing">Pricing</a></li>
             <li><a href="../index.html#about">About Us</a></li>
             <li><a href="../index.html#contact">Contact</a></li>
         </ul>
-
-        <!-- Login Button -->
         <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
     </nav>
 
@@ -55,7 +56,7 @@
             <img src="../assets/images/back.png" alt="Back Icon" class="back-icon">
             <span class="back-text">Back</span>
         </div>
-        
+
         <!-- Instruction Section -->
         <div class="signature-instruction">
             <h2>Draw your Signature</h2>
@@ -71,71 +72,90 @@
 
         <!-- Controls for Customizing Signature -->
         <div class="buttons">
-            <!-- Color Selection -->
-            <label for="drawingColor" class="drawing-color-label">Color :</label>
-            <div class="color-options">
-                <!-- Predefined Color Options -->
-                <div class="color-circle" style="background-color: #3B3B3B;" onclick="selectColor('#3B3B3B')"></div>
-                <div class="color-circle" style="background-color: #1A1A1A;" onclick="selectColor('#1A1A1A')"></div>
-                <div class="color-circle" style="background-color: #003366;" onclick="selectColor('#003366')"></div>
-                <div class="color-circle" style="background-color: #004d00;" onclick="selectColor('#004d00')"></div>
-                <div class="color-circle" style="background-color: #663300;" onclick="selectColor('#663300')"></div>
-                <div class="color-circle" style="background-color: #4b4b4b;" onclick="selectColor('#4b4b4b')"></div>
-                <div class="color-circle" style="background-color: #808080;" onclick="selectColor('#808080')"></div>
+            <div class="controls-group">
+                <!-- Color Selection -->
+                <label for="drawingColor" class="drawing-color-label">Color:</label>
+                <div class="color-options">
+                    <div class="color-circle" style="background-color: #3B3B3B;" onclick="selectColor('#3B3B3B')"></div>
+                    <div class="color-circle" style="background-color: #1A1A1A;" onclick="selectColor('#1A1A1A')"></div>
+                    <div class="color-circle" style="background-color: #003366;" onclick="selectColor('#003366')"></div>
+                    <div class="color-circle" style="background-color: #004d00;" onclick="selectColor('#004d00')"></div>
+                    <div class="color-circle" style="background-color: #663300;" onclick="selectColor('#663300')"></div>
+                    <div class="color-circle" style="background-color: #4b4b4b;" onclick="selectColor('#4b4b4b')"></div>
+                    <div class="color-circle" style="background-color: #808080;" onclick="selectColor('#808080')"></div>
+                </div>
             </div>
 
-            <!-- Brush Size Control -->
-            <label for="brushSize" class="brush-size-label">Brush Size:</label>
-            <input type="range" id="brushSize" min="1" max="20" value="2" onchange="updateBrushSize(this.value)">
+            <div class="controls-group">
+                <!-- Brush Size Control -->
+                <label for="brushSize" class="brush-size-label">Brush:</label>
+                <input type="range" id="brushSize" min="1" max="20" value="2" onchange="updateBrushSize(this.value)">
+            </div>
+
+            <div class="controls-group">
+                <label for="eraserSize" class="eraser-size-label">Eraser:</label>
+                <input type="range" id="eraserSize" min="1" max="50" value="10" onchange="updateEraserSize(this.value)">
+            </div>
+
+            <div class="controls-group">
+                <!-- File Format Selection -->
+                <label for="fileformat" class="file-format">Format:</label>
+                <select id="fileFormat">
+                    <option value="png">PNG</option>
+                    <option value="jpeg">JPEG</option>
+                    <option value="gif">GIF</option>
+                </select>
+            </div>
 
             <!-- Action Buttons -->
-            <button id="clearBtn">Clear</button>
-            <button id="saveBtn">Save & Download</button>
-            <button id="eraserBtn">Eraser</button>
-            <label for="eraserSize" class="eraser-size-label" style="color: #003366;">Eraser Size:</label>
-            <input type="range" id="eraserSize" min="1" max="50" value="10" onchange="updateEraserSize(this.value)">
-
-            <!-- File Format Selection -->
-            <label for="fileformat" class="file-format">Format:</label>
-            <select id="fileFormat">
-                <option value="png">PNG</option>
-                <option value="jpeg">JPEG</option>
-                <option value="gif">GIF</option>
-            </select>
+            <button id="clearBtn" class="primary-btn">Clear</button>
+            <button id="eraserBtn" class="primary-btn">Eraser</button>
+            <button id="saveBtn" class="primary-btn">Save Signature</button>
         </div>
     </div>
 
     <!-- Footer Section -->
-    <footer class="footer">
-        <div class="name">
-            <p><i>Made By</i> <a class="alink" href="https://github.com/anchalchaturvedi08"><i>Anchal Chaturvedi</i></a></p>
-        </div>
-        <p>&copy; 2025 <i>QuickSign</i> | All rights reserved.</p>
-        
-        <!-- Social Media Links Section -->
-        <div class="connect">
-            <p>Connect With Us:</p>
-            <div class="social-icons">
-                <!-- Social media icons for connecting -->
-                <a href="https://twitter.com" target="_blank">
-                    <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter">
-                </a>
-                <a href="https://instagram.com" target="_blank">
-                    <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram">
-                </a>
-                <a href="https://linkedin.com" target="_blank" style="color: #f0f0f0;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                        className="lucide lucide-linkedin h-5 w-5">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect width="4" height="12" x="2" y="9"></rect>
-                        <circle cx="4" cy="4" r="2"></circle>
-                    </svg> 
-                </a>
-                <a href="https://github.com/anchalchaturvedi08" target="_blank">
-                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
-                </a>
+    <footer>
+        <div class="footer-body">
+            <div class="footer-container">
+                <div class="sec discript">
+                    <div class="footer-logo">
+                        <img src="../logo.png" alt="Logo">
+                        <div class="logo">QuickSign</div>
+                    </div>
+                    <p>A premium user-friendly Signature App where you can seamlessly draw, customize, and save your
+                        digital signatures for professional use.</p>
+                </div>
+                <div class="sec quicklinks">
+                    <h2>Quick Links</h2>
+                    <ul>
+                        <li><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                        <li><a href="../index.html#about"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
+                        <li><a href="../index.html#pricing"><i class="fa-solid fa-hand-holding-dollar"></i> Pricing</a>
+                        </li>
+                        <li><a href="../index.html#contact"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="sec quicklinks">
+                    <h2>Support</h2>
+                    <ul>
+                        <li><a href="#"><i class="fa-solid fa-file-contract"></i> Terms</a></li>
+                        <li><a href="#"><i class="fa-solid fa-shield"></i> Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="sec followus">
+                    <h2>Follow us</h2>
+                    <ul class="social">
+                        <li><a href="#" class="icons"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="#" class="icons"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#" class="icons"><i class="fa-brands fa-github"></i></a></li>
+                    </ul>
+                </div>
             </div>
+        </div>
+        <div class="copyrights">
+            <p>&copy; 2025 <i>QuickSign</i> | All rights reserved.</p>
+            <p><i>Made By</i> <a class="alink" href="https://github.com/anchalchaturvedi08">Anchal Chaturvedi</a></p>
         </div>
     </footer>
 

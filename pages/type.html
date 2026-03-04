@@ -11,30 +11,39 @@
     <link rel="shortcut icon" href="../assets/favicon/favicon.png" type="image/x-icon">
 
     <!-- Linking External Stylesheets -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/type.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../assets/css/type.css">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Additional Handwriting Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Aguafina+Script&family=Allura&family=Arizonia&family=Bad+Script&family=Bilbo+Swash+Caps&family=Cedarville+Cursive&family=Dancing+Script:wght@400..700&family=Euphoria+Script&family=Satisfy&family=Shadows+Into+Light+Two&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
 
 <body>
 
-    <!-- Navbar Section: Contains the website logo and navigation links -->
+    <!-- Navbar -->
     <nav class="navbar">
-        <div class="logo">QuickSign</div>
+        <a href="../index.html" class="brand">
+            <img src="../logo.png" alt="QuickSign Logo" class="logo-img">
+            <span class="logo">QuickSign</span>
+        </a>
         <ul class="nav-links">
             <li><a href="../index.html">Home</a></li>
             <li><a href="../index.html#pricing">Pricing</a></li>
             <li><a href="../index.html#about">About Us</a></li>
             <li><a href="../index.html#contact">Contact</a></li>
         </ul>
-        <!-- Login Button -->
         <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
     </nav>
 
@@ -46,75 +55,62 @@
             <img src="../assets/images/back.png" alt="Back Icon" class="back-icon">
             <span class="back-text">Back</span>
         </div>
-        
+
         <h1>Type Your Signature</h1>
+
         <!-- Text input for signature -->
-        <input type="text" id="textInput" placeholder="Enter text to style">
-        <!-- Button to generate styled signature -->
-        <button id="generateBtn">Generate</button>
+        <div class="input-area">
+            <input type="text" id="textInput" placeholder="Enter text to style">
+            <button id="generateBtn" class="primary-btn">Generate</button>
+        </div>
 
         <!-- Container to display generated font styles -->
         <div id="fontStylesContainer"></div>
     </div>
 
-    <!-- Footer Section: Includes creator info, social media links, and copyright -->
+    <!-- Footer Section -->
     <footer>
-
         <div class="footer-body">
             <div class="footer-container">
-               <!---discript-->
-               <div class="sec discript">
-                   <div class="footer-logo">
-                    <img src="../logo.png">
-                    <div class="logo">QuickSign</div>
-                   </div>
-                   <p>
-                    A user-friendly Signature App where you can draw, customize, save your digital signatures easily. Perfect for creating personalized digital signatures.</p>
-               </div>
-    
-                <!--Quick links_--->
+                <div class="sec discript">
+                    <div class="footer-logo">
+                        <img src="../logo.png" alt="Logo">
+                        <div class="logo">QuickSign</div>
+                    </div>
+                    <p>A premium user-friendly Signature App where you can seamlessly draw, customize, and save your
+                        digital signatures for professional use.</p>
+                </div>
                 <div class="sec quicklinks">
-                   <h2>Quick Links</h2>
-                   <ul>
-                       <li><a href="#index.html"><i class="fa-solid fa-house" style="padding-right: 5px;"></i>Home</a>
-                       </li>
-                       <li><a href="#about"><i class="fa-solid fa-circle-info"style="padding-right: 5px;"></i>About Us</a></li>
-                       <li><a href="#pricing"><i class="fa-solid fa-hand-holding-dollar" style="padding-right: 5px;"></i>Pricing</a></li>
-                       <li><a href="#contact"> <i class="fa-solid fa-envelope" style="padding-right: 5px;"></i>Contact Us</a></li>
-                   </ul>
-               </div>
-    
-                <!--support-->
+                    <h2>Quick Links</h2>
+                    <ul>
+                        <li><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                        <li><a href="../index.html#about"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
+                        <li><a href="../index.html#pricing"><i class="fa-solid fa-hand-holding-dollar"></i> Pricing</a>
+                        </li>
+                        <li><a href="../index.html#contact"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+                    </ul>
+                </div>
                 <div class="sec quicklinks">
-                   <h2>Support</h2>
-                   <ul>
-                       <li><a href="#">Terms & Conditions</a></li>
-                       <li><a href="#">Privacy Policy</a></li>
-                       <li><a href="#">FAQ</a></li>
-                   </ul>
-               </div>
-               <!--contact-->
-               <div class="sec followus">
-                   <h2>Follow us</h2>
-                   <ul class="social">
-                    <li><a href="https://www.facebook.com/" class="icons"><i class="fa-brands fa-facebook-f"></i></a></li>
-                    <li><a href="https://www.instagram.com/" class="icons"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="https://github.com/" class="icons"><i class="fa-brands fa-github"></i></a></li>
-                    <li><a href="https://www.linkedin.com/" class="icons"><i class="fa-brands fa-linkedin"></i></a></li>
-                    <li><a href="https://x.com/" class="icons"><i class="fa-brands fa-x-twitter"></i></a></li>
-                </ul>
-               </div>
-
+                    <h2>Support</h2>
+                    <ul>
+                        <li><a href="#"><i class="fa-solid fa-file-contract"></i> Terms</a></li>
+                        <li><a href="#"><i class="fa-solid fa-shield"></i> Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="sec followus">
+                    <h2>Follow us</h2>
+                    <ul class="social">
+                        <li><a href="#" class="icons"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="#" class="icons"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#" class="icons"><i class="fa-brands fa-github"></i></a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-      </div>
         <div class="copyrights">
             <p>&copy; 2025 <i>QuickSign</i> | All rights reserved.</p>
-            <p><i>Made By</i> <a class="alink" href="https://github.com/anchalchaturvedi08"><i>Anchal Chaturvedi</i></a>
-            </p>
+            <p><i>Made By</i> <a class="alink" href="https://github.com/anchalchaturvedi08">Anchal Chaturvedi</a></p>
         </div>
-        
-        
     </footer>
 
     <!-- Linking External JavaScript -->

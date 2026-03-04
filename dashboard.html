@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickSign - Dashboard</title>
+    <link rel="shortcut icon" href="assets/favicon/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/chatbot.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .dashboard-container {
+            padding: 140px 5% 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .dashboard-header {
+            margin-bottom: 50px;
+        }
+
+        .dashboard-header h1 {
+            font-size: 3rem;
+            color: var(--text-primary);
+        }
+
+        .user-name {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .action-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="brand">
+            <img src="logo.png" alt="QuickSign Logo" class="logo-img">
+            <span class="logo">QuickSign</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pages/canva.html">Draw Signature</a></li>
+            <li><a href="pages/type.html">Type Signature</a></li>
+        </ul>
+        <button class="login-btn" onclick="logout()">Logout</button>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Welcome, <span class="user-name" id="userNameDisplay">User</span>!</h1>
+            <p class="hero-subtitle" style="margin-top: 20px;">What would you like to do today?</p>
+        </div>
+
+        <div class="action-cards">
+            <div class="option">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-pen-nib"></i>
+                </div>
+                <h3>Draw New Signature</h3>
+                <p>Create a stunning signature by drawing it.</p>
+                <button class="primary-btn" onclick="window.location.href='pages/canva.html'">Start Drawing</button>
+            </div>
+            <div class="option">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-keyboard"></i>
+                </div>
+                <h3>Type New Signature</h3>
+                <p>Type your name and pick premium styles.</p>
+                <button class="primary-btn" onclick="window.location.href='pages/type.html'">Start Typing</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const userStr = localStorage.getItem("currentUser");
+        if (!userStr) {
+            window.location.href = "pages/login.html";
+        } else {
+            try {
+                const user = JSON.parse(userStr);
+                document.getElementById('userNameDisplay').textContent = user.name || user.email.split('@')[0];
+            } catch (e) {
+                console.error("Error parsing user data", e);
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem("currentUser");
+            window.location.href = "index.html";
+        }
+    </script>
+    <script src="scripts/chatbot.js"></script>
+</body>
+
+</html>
