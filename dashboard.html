@@ -59,7 +59,7 @@
             <li><a href="pages/canva.html">Draw Signature</a></li>
             <li><a href="pages/type.html">Type Signature</a></li>
         </ul>
-        <button class="login-btn" onclick="logout()">Logout</button>
+        <button class="login-btn" onclick="_logout()">Logout</button>
     </nav>
 
     <div class="dashboard-container">
@@ -101,8 +101,8 @@
             }
         }
 
-        /* exported logout */
-        function logout() {
+        /* exported _logout */
+        function _logout() {
             localStorage.removeItem("currentUser");
             window.location.href = "index.html";
         }

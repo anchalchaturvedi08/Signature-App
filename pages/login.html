@@ -42,7 +42,7 @@
         <p class="auth-subtitle">Log in to manage your digital signatures.</p>
 
         <!-- Login Form -->
-        <form class="auth-form" onsubmit="login(event)">
+        <form class="auth-form" onsubmit="_login(event)">
             <div class="input-group">
                 <label for="loginEmail">Email Address</label>
                 <input type="email" id="loginEmail" placeholder="Enter your email" required>
@@ -105,8 +105,8 @@
     </footer>
 
     <script>
-        /* exported login */
-        function login(event) {
+        /* exported _login */
+        function _login(event) {
             event.preventDefault();
 
             const email = document.getElementById("loginEmail").value;

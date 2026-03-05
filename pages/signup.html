@@ -42,7 +42,7 @@
         <p class="auth-subtitle">Create an account to start managing your signatures.</p>
 
         <!-- Sign-Up Form -->
-        <form class="auth-form" onsubmit="signup(event)">
+        <form class="auth-form" onsubmit="_signup(event)">
             <div class="input-group">
                 <label for="signupName">Full Name</label>
                 <input type="text" id="signupName" placeholder="Enter your full name" required>
@@ -65,8 +65,8 @@
     </div>
 
     <script>
-        /* exported signup */
-        function signup(event) {
+        /* exported _signup */
+        function _signup(event) {
             event.preventDefault();
 
             const name = document.getElementById("signupName").value;
