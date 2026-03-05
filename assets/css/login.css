@@ -18,11 +18,11 @@ body {
     box-shadow: var(--glass-shadow);
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
     text-align: center;
     position: relative;
     z-index: 10;
     margin: auto;
+
     /* Vertically center combined with flex body */
     margin-top: 140px;
     margin-bottom: 80px;
@@ -63,9 +63,9 @@ body {
 .input-group input {
     width: 100%;
     padding: 14px 16px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgb(0 0 0 / 10%);
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgb(255 255 255 / 80%);
     color: var(--text-primary);
     font-size: 15px;
     font-family: var(--font-body);
@@ -76,7 +76,7 @@ body {
 .input-group input:focus {
     border-color: #6366f1;
     background: white;
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 0 0 4px rgb(99 102 241 / 10%);
 }
 
 .auth-btn {
@@ -92,12 +92,12 @@ body {
     border: none;
     cursor: pointer;
     transition: all var(--transition-smooth);
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 4px 15px rgb(99 102 241 / 30%);
 }
 
 .auth-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 8px 25px rgb(99 102 241 / 40%);
 }
 
 .form-p {

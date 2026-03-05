@@ -16,7 +16,7 @@
     align-items: center;
     justify-content: center;
     font-size: 24px;
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 8px 25px rgb(99 102 241 / 40%);
     cursor: pointer;
     z-index: 9999;
     transition: all var(--transition-smooth);
@@ -26,7 +26,7 @@
 
 .chat-fab:hover {
     transform: scale(1.1);
-    box-shadow: 0 12px 35px rgba(99, 102, 241, 0.6);
+    box-shadow: 0 12px 35px rgb(99 102 241 / 60%);
 }
 
 /* Chat Window Container */
@@ -40,7 +40,6 @@
     border-radius: 20px;
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
     box-shadow: var(--glass-shadow);
     z-index: 9998;
     display: flex;
@@ -60,7 +59,7 @@
 
 /* Chat Header */
 .chat-header {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgb(255 255 255 / 10%);
     padding: 15px 20px;
     border-bottom: 1px solid var(--glass-border);
     display: flex;
@@ -112,7 +111,7 @@
 }
 
 .chat-messages::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgb(0 0 0 / 10%);
     border-radius: 10px;
 }
 
@@ -141,7 +140,7 @@
 
 .message.bot {
     align-self: flex-start;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgb(255 255 255 / 70%);
     color: var(--text-primary);
     border-bottom-left-radius: 4px;
 }
@@ -185,7 +184,7 @@
     padding: 10px 15px;
     border: 1px solid var(--glass-border);
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgb(255 255 255 / 50%);
     font-size: 14px;
     outline: none;
     transition: all var(--transition-fast);
@@ -209,7 +208,7 @@
 
 .api-key-setup button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 4px 15px rgb(99 102 241 / 30%);
 }
 
 .api-key-setup a {
@@ -227,7 +226,7 @@
     display: flex;
     padding: 15px;
     border-top: 1px solid var(--glass-border);
-    background: rgba(255, 255, 255, 0.2);
+    background: rgb(255 255 255 / 20%);
     gap: 10px;
 }
 
@@ -239,7 +238,7 @@
     font-family: var(--font-body);
     font-size: 14px;
     outline: none;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgb(255 255 255 / 70%);
     transition: all var(--transition-fast);
 }
 
@@ -310,7 +309,7 @@
 }
 
 /* Adjustments for smaller screens */
-@media (max-width: 480px) {
+@media (width <=480px) {
     .chat-window {
         bottom: 0;
         right: 0;

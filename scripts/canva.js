@@ -17,8 +17,8 @@ let isEraserActive = false;  // Flag to track if eraser is active
 let eraserSize = 10;
 
 // Function to select color
-/* exported selectColor */
-function selectColor(color) {
+/* exported _selectColor */
+function _selectColor(color) {
     currentColor = color;  // Update the current color
     ctx.strokeStyle = currentColor;  // Set the stroke color to the selected color
     isEraserActive = false;  // Deactivate eraser when a color is selected
@@ -26,17 +26,17 @@ function selectColor(color) {
 }
 
 // Function to update brush size
-/* exported updateBrushSize */
-function updateBrushSize(size) {
+/* exported _updateBrushSize */
+function _updateBrushSize(size) {
     lineWidth = size;  // Update line width based on input
 }
 
-function updateEraserSize(size) {
+function _updateEraserSize(size) {
     eraserSize = size;
 }
 
 eraserSizeInput.addEventListener('input', (e) => {
-    updateEraserSize(e.target.value);
+    _updateEraserSize(e.target.value);
 });
 
 

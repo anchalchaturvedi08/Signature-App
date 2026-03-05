@@ -6,18 +6,14 @@
     --secondary-gradient: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
     --bg-gradient: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
     --dark-bg: #0f172a;
-
-    --glass-bg: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.5);
-    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-
+    --glass-bg: rgb(255 255 255 / 70%);
+    --glass-border: rgb(255 255 255 / 50%);
+    --glass-shadow: 0 8px 32px 0 rgb(31 38 135 / 7%);
     --text-primary: #1e293b;
     --text-secondary: #475569;
     --text-light: #f8fafc;
-
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
-
     --transition-fast: 0.2s ease;
     --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -34,9 +30,9 @@ body {
     font-family: var(--font-body);
     color: var(--text-primary);
     background: #f8fafc;
-    background-image: radial-gradient(at 40% 20%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
-        radial-gradient(at 80% 0%, rgba(168, 85, 247, 0.1) 0px, transparent 50%),
-        radial-gradient(at 0% 50%, rgba(236, 72, 153, 0.1) 0px, transparent 50%);
+    background-image: radial-gradient(at 40% 20%, rgb(99 102 241 / 10%) 0, transparent 50%),
+        radial-gradient(at 80% 0%, rgb(168 85 247 / 10%) 0, transparent 50%),
+        radial-gradient(at 0% 50%, rgb(236 72 153 / 10%) 0, transparent 50%);
     background-attachment: fixed;
     line-height: 1.6;
     overflow-x: hidden;
@@ -63,9 +59,8 @@ a {
 /* -------------------- Typography & Utilities -------------------- */
 .gradient-text {
     background: var(--primary-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
     display: inline-block;
 }
 
@@ -79,9 +74,8 @@ a {
     justify-content: space-between;
     align-items: center;
     padding: 15px 5%;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgb(255 255 255 / 80%);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--glass-border);
     z-index: 1000;
     transition: all var(--transition-smooth);
@@ -161,18 +155,17 @@ a {
     background-size: 200% auto;
     cursor: pointer;
     transition: all var(--transition-smooth);
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 4px 15px rgb(99 102 241 / 30%);
 }
 
 .primary-btn:hover {
     background-position: right center;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 8px 25px rgb(99 102 241 / 40%);
 }
 
 .login-btn {
     padding: 10px 24px;
-    border: none;
     border-radius: 10px;
     font-family: var(--font-heading);
     font-weight: 600;
@@ -180,13 +173,13 @@ a {
     background: white;
     color: var(--text-primary);
     cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 10px rgb(0 0 0 / 5%);
+    border: 1px solid rgb(0 0 0 / 5%);
     transition: all var(--transition-smooth);
 }
 
 .login-btn:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 20px rgb(0 0 0 / 10%);
     transform: translateY(-2px);
 }
 
@@ -226,7 +219,6 @@ a {
 .option {
     background: var(--glass-bg);
     backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--glass-border);
     border-radius: 24px;
     padding: 40px 30px;
@@ -253,8 +245,8 @@ a {
 
 .option:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 20px 40px rgb(0 0 0 / 8%);
+    background: rgb(255 255 255 / 90%);
 }
 
 .option:hover::before {
@@ -270,7 +262,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+    box-shadow: 0 10px 20px rgb(99 102 241 / 20%);
     color: white;
     font-size: 32px;
     transition: transform var(--transition-smooth);
@@ -309,7 +301,7 @@ a {
 
 .option:hover .option-btn {
     background: var(--primary-gradient);
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 8px 25px rgb(99 102 241 / 30%);
 }
 
 /* -------------------- About Section -------------------- */
@@ -339,7 +331,7 @@ a {
 
 .team-member {
     background: var(--glass-bg);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgb(0 0 0 / 5%);
     border-radius: 24px;
     padding: 40px;
     max-width: 350px;
@@ -348,7 +340,7 @@ a {
 
 .team-member:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 20px 40px rgb(0 0 0 / 5%);
 }
 
 .team-member img {
@@ -357,7 +349,7 @@ a {
     height: 150px;
     object-fit: cover;
     margin-bottom: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
     border: 4px solid var(--glass-bg);
 }
 
@@ -397,8 +389,8 @@ a {
     flex: 1;
     min-width: 300px;
     max-width: 350px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgb(0 0 0 / 5%);
+    box-shadow: 0 10px 30px rgb(0 0 0 / 2%);
     transition: all var(--transition-smooth);
     position: relative;
     display: flex;
@@ -407,13 +399,13 @@ a {
 
 .pricing-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 20px 40px rgb(0 0 0 / 8%);
 }
 
 .pricing-card.popular {
     transform: scale(1.05);
     border: 2px solid #a855f7;
-    box-shadow: 0 20px 40px rgba(168, 85, 247, 0.15);
+    box-shadow: 0 20px 40px rgb(168 85 247 / 15%);
 }
 
 .pricing-card.popular:hover {
@@ -504,8 +496,8 @@ a {
     background: var(--glass-bg);
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 20px 40px rgb(0 0 0 / 5%);
+    border: 1px solid rgb(0 0 0 / 5%);
 }
 
 .contact-info {
@@ -544,7 +536,7 @@ a {
 .info-item i {
     width: 40px;
     height: 40px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgb(255 255 255 / 10%);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -555,12 +547,12 @@ a {
 }
 
 .info-item p {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgb(255 255 255 / 80%);
     font-size: 15px;
 }
 
 .info-item a {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgb(255 255 255 / 80%);
 }
 
 .info-item a:hover {
@@ -590,7 +582,7 @@ a {
 .form-group textarea {
     width: 100%;
     padding: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgb(0 0 0 / 10%);
     border-radius: 12px;
     font-family: var(--font-body);
     font-size: 15px;
@@ -603,7 +595,7 @@ a {
     outline: none;
     border-color: #6366f1;
     background: white;
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 0 0 4px rgb(99 102 241 / 10%);
 }
 
 #contact-form .primary-btn {
@@ -627,7 +619,7 @@ footer {
     max-width: 1200px;
     margin: 0 auto;
     padding-bottom: 60px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgb(255 255 255 / 10%);
 }
 
 .footer-logo {
@@ -647,7 +639,7 @@ footer {
 }
 
 .discript p {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgb(255 255 255 / 60%);
     font-size: 14px;
     line-height: 1.8;
     max-width: 300px;
@@ -668,7 +660,7 @@ footer {
 }
 
 .quicklinks ul li a {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgb(255 255 255 / 60%);
     font-size: 15px;
     display: flex;
     align-items: center;
@@ -695,7 +687,7 @@ footer {
 .social .icons {
     width: 40px;
     height: 40px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgb(255 255 255 / 10%);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -719,7 +711,7 @@ footer {
     max-width: 1200px;
     margin: 0 auto;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgb(255 255 255 / 50%);
 }
 
 .alink {
@@ -732,7 +724,7 @@ footer {
 }
 
 /* -------------------- Media Queries -------------------- */
-@media (max-width: 1024px) {
+@media (width <=1024px) {
     .contact-container {
         flex-direction: column;
     }
@@ -742,9 +734,10 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
+@media (width <=768px) {
     .nav-links {
         display: none;
+
         /* In a real app, implement a hamburger menu here */
     }
 
