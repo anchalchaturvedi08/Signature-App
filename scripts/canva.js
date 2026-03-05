@@ -4,7 +4,7 @@ const ctx = canvas.getContext('2d');  // 2D context for drawing on the canvas
 const clearBtn = document.getElementById('clearBtn');  // Button to clear the canvas
 const saveBtn = document.getElementById('saveBtn');  // Button to save the canvas content
 const eraserBtn = document.getElementById('eraserBtn');  // Eraser button
-const brushSizeInput = document.getElementById('brushSize');  // Brush size input
+const _brushSizeInput = document.getElementById('brushSize');  // Brush size input
 const eraserSizeInput = document.getElementById('eraserSize'); //Eraser size input
 
 // Set initial drawing color and properties
@@ -14,26 +14,28 @@ let lastX = 0;  // Last X position of the mouse
 let lastY = 0;  // Last Y position of the mouse
 let lineWidth = 2;  // Line width for drawing
 let isEraserActive = false;  // Flag to track if eraser is active
-let eraserSize=10;
+let eraserSize = 10;
 
 // Function to select color
+/* exported selectColor */
 function selectColor(color) {
     currentColor = color;  // Update the current color
     ctx.strokeStyle = currentColor;  // Set the stroke color to the selected color
     isEraserActive = false;  // Deactivate eraser when a color is selected
-    canvas.style.cursor='crosshair';
+    canvas.style.cursor = 'crosshair';
 }
 
 // Function to update brush size
+/* exported updateBrushSize */
 function updateBrushSize(size) {
     lineWidth = size;  // Update line width based on input
 }
 
 function updateEraserSize(size) {
-    eraserSize=size;
+    eraserSize = size;
 }
 
-eraserSizeInput.addEventListener('input',(e)=>{
+eraserSizeInput.addEventListener('input', (e) => {
     updateEraserSize(e.target.value);
 });
 
@@ -44,17 +46,17 @@ function setupCanvas() {
     canvas.addEventListener('mousedown', startDrawing);
     canvas.addEventListener('mousemove', draw);
     canvas.addEventListener('mousemove', e => {
-        if (isEraserActive) drawCursor(e); 
+        if (isEraserActive) drawCursor(e);
     });
     canvas.addEventListener('mouseup', stopDrawing);
     canvas.addEventListener('mouseout', stopDrawing);
-    
+
     // Touch events for mobile/tablets
     canvas.addEventListener('touchstart', handleTouchStart, { passive: false });
     canvas.addEventListener('touchmove', handleTouchMove, { passive: false });
     canvas.addEventListener('touchend', stopDrawing);
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height); 
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
 }
@@ -87,7 +89,7 @@ function startDrawing(e) {
     [lastX, lastY] = [e.offsetX, e.offsetY];  // Set initial drawing coordinates
 }
 
-function drawCursor(e) {
+function drawCursor(_e) {
     const cursorCanvas = document.createElement('canvas');
     const cursorCtx = cursorCanvas.getContext('2d');
     const size = eraserSize * 2;
@@ -116,12 +118,12 @@ function draw(e) {
 
 function drawLine(x, y) {
     ctx.lineWidth = isEraserActive ? eraserSize : lineWidth;
-    
+
     if (isEraserActive) {
         ctx.globalCompositeOperation = 'destination-out';
     } else {
-        ctx.globalCompositeOperation = 'source-over'; 
-        ctx.strokeStyle = currentColor; 
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.strokeStyle = currentColor;
     }
 
     ctx.beginPath();
