@@ -1,9 +1,15 @@
+const { TextEncoder, TextDecoder } = require('util');
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
+
 const { JSDOM } = require('jsdom');
 
 describe('Chatbot UI initialization', () => {
     let window, document;
     beforeEach(() => {
-        const dom = new JSDOM(`<!DOCTYPE html><html><body></body></html>`);
+        const dom = new JSDOM(`<!DOCTYPE html><html><body></body></html>`, {
+            runScripts: "dangerously"
+        });
         window = dom.window;
         document = window.document;
         // Mock localStorage
@@ -16,6 +22,9 @@ describe('Chatbot UI initialization', () => {
         const scriptEl = document.createElement('script');
         scriptEl.textContent = scriptContent;
         document.body.appendChild(scriptEl);
+        
+        // Trigger DOMContentLoaded so the script starts
+        document.dispatchEvent(new window.Event('DOMContentLoaded'));
     });
 
     test('should inject chat widget into DOM', () => {
