@@ -27,7 +27,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Aguafina+Script&family=Allura&family=Arizonia&family=Bad+Script&family=Bilbo+Swash+Caps&family=Cedarville+Cursive&family=Dancing+Script:wght@400..700&family=Euphoria+Script&family=Satisfy&family=Shadows+Into+Light+Two&display=swap"
         rel="stylesheet">
-
+    <script>
+        if (!localStorage.getItem("currentUser")) {
+            window.location.href = "login.html";
+        }
+    </script>
 </head>
 
 <body>

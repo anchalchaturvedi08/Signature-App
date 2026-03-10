@@ -30,6 +30,11 @@
 
     <!-- Signature Pad Library -->
     <script src="https://cdn.jsdelivr.net/npm/signature_pad"></script>
+    <script>
+        if (!localStorage.getItem("currentUser")) {
+            window.location.href = "login.html";
+        }
+    </script>
 </head>
 
 <body>

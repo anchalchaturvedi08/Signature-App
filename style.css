@@ -58,10 +58,19 @@ a {
 
 /* -------------------- Typography & Utilities -------------------- */
 .gradient-text {
-    background: var(--primary-gradient);
+    background: linear-gradient(to right, #6366f1, #a855f7, #ec4899, #a855f7, #6366f1);
+    background-size: 200% auto;
     background-clip: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
+    animation: gradientShine 3s linear infinite;
+}
+
+@keyframes gradientShine {
+    to {
+        background-position: 200% center;
+    }
 }
 
 /* -------------------- Navbar -------------------- */
@@ -195,6 +204,18 @@ a {
     font-size: clamp(2.5rem, 5vw, 4rem);
     margin-bottom: 20px;
     letter-spacing: -1px;
+    animation: fadeUp 1s ease-out forwards;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-subtitle {
@@ -308,7 +329,7 @@ a {
 #about {
     padding: 100px 5%;
     text-align: center;
-    background: white;
+    background: #f8fafc;
 }
 
 .section-title {
@@ -330,17 +351,19 @@ a {
 }
 
 .team-member {
-    background: var(--glass-bg);
-    border: 1px solid rgb(0 0 0 / 5%);
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
     border-radius: 24px;
     padding: 40px;
     max-width: 350px;
     transition: all var(--transition-smooth);
+    box-shadow: 0 10px 30px rgb(0 0 0 / 5%);
 }
 
 .team-member:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgb(0 0 0 / 5%);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgb(99 102 241 / 15%);
+    border-color: #6366f1;
 }
 
 .team-member img {
