@@ -59,13 +59,11 @@ function generateFonts() {
             
             // Persist to local storage
             const userStr = localStorage.getItem("currentUser");
-            if(userStr) {
-                const user = JSON.parse(userStr);
-                let docs = JSON.parse(localStorage.getItem(`docs_${user.email}`)) || [];
-                docs.unshift({ date: new Date().toISOString(), data: dataURL });
-                if(docs.length > 20) docs.pop(); // limit size
-                localStorage.setItem(`docs_${user.email}`, JSON.stringify(docs));
-            }
+            const email = userStr ? JSON.parse(userStr).email : "guest";
+            let docs = JSON.parse(localStorage.getItem(`docs_${email}`)) || [];
+            docs.unshift({ date: new Date().toISOString(), data: dataURL });
+            if(docs.length > 20) docs.pop(); // limit size
+            localStorage.setItem(`docs_${email}`, JSON.stringify(docs));
 
             const link = document.createElement('a'); // Create an invisible anchor link
             link.download = `fontDesign-${index}.png`; // Set the filename for the image download

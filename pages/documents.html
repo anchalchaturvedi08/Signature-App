@@ -154,8 +154,12 @@
     <script src="../scripts/main.js"></script>
     <script>
         const userStr = localStorage.getItem("currentUser");
-        if (!userStr) {
-            window.location.href = "login.html";
+        let currentUser = { email: "guest" }; // Fallback to guest
+
+        if (userStr) {
+            try {
+                currentUser = JSON.parse(userStr);
+            } catch (e) { console.error(e); }
         }
 
         /* exported _logout */
@@ -166,8 +170,7 @@
 
         // Render saved documents
         function renderDocuments() {
-            const user = JSON.parse(userStr);
-            const docs = JSON.parse(localStorage.getItem(`docs_${user.email}`)) || [];
+            const docs = JSON.parse(localStorage.getItem(`docs_${currentUser.email}`)) || [];
             const gallery = document.getElementById('docsGallery');
             
             if (docs.length === 0) {

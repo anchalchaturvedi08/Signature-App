@@ -154,15 +154,13 @@ eraserBtn.addEventListener('click', () => {
 // Function to safely persist data
 function saveSignatureToLocal(data) {
     const userStr = localStorage.getItem("currentUser");
-    if(userStr) {
-        const user = JSON.parse(userStr);
-        const email = user.email;
-        let docs = JSON.parse(localStorage.getItem(`docs_${email}`)) || [];
-        // Prevent array from growing infinitely (keep last 20)
-        docs.unshift({ date: new Date().toISOString(), data: data });
-        if(docs.length > 20) docs.pop();
-        localStorage.setItem(`docs_${email}`, JSON.stringify(docs));
-    }
+    const email = userStr ? JSON.parse(userStr).email : "guest";
+    
+    let docs = JSON.parse(localStorage.getItem(`docs_${email}`)) || [];
+    // Prevent array from growing infinitely (keep last 20)
+    docs.unshift({ date: new Date().toISOString(), data: data });
+    if(docs.length > 20) docs.pop();
+    localStorage.setItem(`docs_${email}`, JSON.stringify(docs));
 }
 
 // Save the canvas content as an image
