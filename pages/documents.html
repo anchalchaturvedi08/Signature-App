@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickSign - My Documents</title>
+    <link rel="shortcut icon" href="../assets/favicon/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        body { padding-top: 0; background: #fdfbfb; }
+        
+        .dashboard-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: rgba(255, 255, 255, 0.8);
+            border-right: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 50;
+            box-shadow: 4px 0 24px rgba(0,0,0,0.02);
+            position: fixed;
+            height: 100vh;
+        }
+
+        .sidebar .brand { padding: 0 24px 30px; }
+        .sidebar-menu { list-style: none; padding: 0 12px; flex-grow: 1; }
+        .sidebar-menu li a {
+            display: flex; align-items: center; padding: 12px 16px; color: var(--text-secondary);
+            border-radius: 12px; margin-bottom: 8px; font-weight: 500; font-size: 15px; transition: all 0.2s;
+        }
+        .sidebar-menu li a i { width: 24px; font-size: 18px; margin-right: 12px; color: #a855f7; }
+        .sidebar-menu li a.active, .sidebar-menu li a:hover { background: rgba(99, 102, 241, 0.1); color: var(--text-primary); }
+        .sidebar-menu li a.active i { color: #6366f1; }
+        .sidebar-logout { padding: 20px; }
+        .sidebar-logout .login-btn { width: 100%; display: flex; justify-content: center; align-items: center; gap: 10px; color: #ef4444; border-color: rgba(239, 68, 68, 0.2); }
+
+        .dashboard-content { flex-grow: 1; padding: 40px 60px; margin-left: 260px; position: relative; }
+
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .doc-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .doc-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px 0 rgba(99, 102, 241, 0.15);
+        }
+
+        .doc-img-container {
+            width: 100%;
+            height: 150px;
+            background: #f8fafc;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 1px dashed rgba(0,0,0,0.1);
+        }
+
+        .doc-img-container img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 24px;
+            border: 1px dashed var(--glass-border);
+        }
+
+        .empty-state i {
+            font-size: 48px;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-layout { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--glass-border); flex-direction: row; align-items: center; justify-content: space-between; padding: 10px 20px; }
+            .sidebar-menu { display: none; }
+            .dashboard-content { margin-left: 0; padding: 20px; }
+            .sidebar .brand { padding: 0; }
+            .sidebar-logout { padding: 0; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Dynamic Background Orbs -->
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <a href="../index.html" class="brand">
+                <img src="../logo.png" alt="QuickSign Logo" class="logo-img" style="height: 28px;">
+                <span class="logo" style="font-size: 20px;">QuickSign</span>
+            </a>
+            <ul class="sidebar-menu">
+                <li><a href="../dashboard.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="canva.html"><i class="fa-solid fa-pen-nib"></i> Draw Signature</a></li>
+                <li><a href="type.html"><i class="fa-solid fa-keyboard"></i> Type Signature</a></li>
+                <li><a href="documents.html" class="active"><i class="fa-solid fa-file-contract"></i> My Documents</a></li>
+                <li><a href="#"><i class="fa-solid fa-gear"></i> Settings</a></li>
+            </ul>
+            <div class="sidebar-logout">
+                <button class="login-btn" onclick="_logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+            </div>
+        </aside>
+
+        <main class="dashboard-content">
+            <h1 style="font-size: 2.5rem; margin-bottom: 10px; color: var(--text-primary);">My <span class="gradient-text">Documents</span></h1>
+            <p style="color: var(--text-secondary); margin-bottom: 40px;">Here are your recently generated and saved spatial signatures.</p>
+
+            <div id="docsGallery" class="docs-grid reveal-hidden">
+                <!-- Javascript will populate this -->
+            </div>
+        </main>
+    </div>
+
+    <script src="../scripts/main.js"></script>
+    <script>
+        const userStr = localStorage.getItem("currentUser");
+        if (!userStr) {
+            window.location.href = "login.html";
+        }
+
+        /* exported _logout */
+        function _logout() {
+            localStorage.removeItem("currentUser");
+            window.location.href = "../index.html";
+        }
+
+        // Render saved documents
+        function renderDocuments() {
+            const user = JSON.parse(userStr);
+            const docs = JSON.parse(localStorage.getItem(`docs_${user.email}`)) || [];
+            const gallery = document.getElementById('docsGallery');
+            
+            if (docs.length === 0) {
+                gallery.classList.remove('docs-grid');
+                gallery.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <h3>No signatures saved yet.</h3>
+                        <p style="color: var(--text-secondary); margin-top: 10px; margin-bottom: 20px;">Head over to the drawing or typing tool to create your first signature.</p>
+                        <button class="primary-btn" onclick="window.location.href='canva.html'">Draw Signature</button>
+                    </div>
+                `;
+                return;
+            }
+
+            gallery.innerHTML = '';
+            docs.forEach((doc, index) => {
+                const dateObj = new Date(doc.date);
+                gallery.innerHTML += `
+                    <div class="doc-card">
+                        <div class="doc-img-container">
+                            <img src="${doc.data}" alt="Saved Signature ${index + 1}">
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: 13px; font-weight: 500;">
+                            Saved on ${dateObj.toLocaleDateString()} at ${dateObj.toLocaleTimeString()}
+                        </p>
+                    </div>
+                `;
+            });
+        }
+
+        renderDocuments();
+
+        // Reveal animation trigger
+        setTimeout(() => {
+            document.querySelectorAll('.reveal-hidden').forEach(el => el.classList.add('reveal-visible'));
+        }, 100);
+    </script>
+</body>
+</html>

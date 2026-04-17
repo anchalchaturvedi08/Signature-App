@@ -117,10 +117,16 @@
             -webkit-text-fill-color: transparent;
         }
 
+        /* Fixed the layout here so it doesn't stretch */
         .action-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .action-cards > .option {
+            flex: 0 0 320px; /* Keeps the cards fixed at 320px */
+            max-width: 320px;
         }
 
         @media (max-width: 768px) {
@@ -130,6 +136,8 @@
             .dashboard-content { margin-left: 0; padding: 20px; }
             .sidebar .brand { padding: 0; }
             .sidebar-logout { padding: 0; }
+            .action-cards { justify-content: center; }
+            .action-cards > .option { flex: 0 0 100%; max-width: 100%; }
         }
     </style>
 </head>
@@ -154,7 +162,8 @@
                 <li><a href="dashboard.html" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
                 <li><a href="pages/canva.html"><i class="fa-solid fa-pen-nib"></i> Draw Signature</a></li>
                 <li><a href="pages/type.html"><i class="fa-solid fa-keyboard"></i> Type Signature</a></li>
-                <li><a href="#"><i class="fa-solid fa-file-contract"></i> My Documents</a></li>
+                <!-- Linked My Documents below -->
+                <li><a href="pages/documents.html"><i class="fa-solid fa-file-contract"></i> My Documents</a></li>
                 <li><a href="#"><i class="fa-solid fa-gear"></i> Settings</a></li>
             </ul>
 

@@ -151,9 +151,25 @@ eraserBtn.addEventListener('click', () => {
     }
 });
 
+// Function to safely persist data
+function saveSignatureToLocal(data) {
+    const userStr = localStorage.getItem("currentUser");
+    if(userStr) {
+        const user = JSON.parse(userStr);
+        const email = user.email;
+        let docs = JSON.parse(localStorage.getItem(`docs_${email}`)) || [];
+        // Prevent array from growing infinitely (keep last 20)
+        docs.unshift({ date: new Date().toISOString(), data: data });
+        if(docs.length > 20) docs.pop();
+        localStorage.setItem(`docs_${email}`, JSON.stringify(docs));
+    }
+}
+
 // Save the canvas content as an image
 saveBtn.addEventListener('click', () => {
     const dataURL = canvas.toDataURL('image/png'); // Convert canvas to data URL
+    saveSignatureToLocal(dataURL); // Persist to My Documents
+    
     const link = document.createElement('a'); // Create an anchor element
     link.href = dataURL; // Set the data URL as the href
     link.download = 'signature.png'; // Set the download filename
