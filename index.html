@@ -20,6 +20,13 @@
 </head>
 
 <body>
+    <!-- Dynamic Background Orbs -->
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
     <!-- Navigation Bar -->
     <nav class="navbar">
         <a href="index.html" class="brand">
@@ -232,12 +239,11 @@
         </div>
     </footer>
     <script src="scripts/chatbot.js"></script>
+    <script src="scripts/main.js"></script>
     <script>
         const user = localStorage.getItem("currentUser");
-
-        if (!user) {
-            window.location.href = "pages/login.html";
-        }
+        // We do not want to force login on index.html so people can see the landing page.
+        // It was redirecting previously, which is bad for a landing page.
     </script>
 </body>
 

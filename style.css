@@ -810,3 +810,91 @@ footer {
         gap: 15px;
     }
 }
+
+/* -------------------- Dynamic Premium Additions -------------------- */
+
+/* Scroll Reveal Utilities */
+.reveal-hidden {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Dynamic Background Orbs */
+.bg-shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    background: #fdfbfb;
+}
+
+.shape {
+    position: absolute;
+    filter: blur(80px);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: floatOrb 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shape-1 {
+    top: -10%;
+    left: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(99,102,241,0.3) 0%, rgba(99,102,241,0) 70%);
+}
+
+.shape-2 {
+    bottom: -20%;
+    right: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, rgba(236,72,153,0.3) 0%, rgba(236,72,153,0) 70%);
+    animation-delay: -5s;
+    animation-duration: 25s;
+}
+
+.shape-3 {
+    top: 40%;
+    left: 40%;
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, rgba(168,85,247,0.2) 0%, rgba(168,85,247,0) 70%);
+    animation-delay: -10s;
+    animation-duration: 30s;
+}
+
+@keyframes floatOrb {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(5%, 5%) scale(1.1); }
+    66% { transform: translate(-5%, 10%) scale(0.9); }
+    100% { transform: translate(0, -5%) scale(1.05); }
+}
+
+/* Enhancing existing options cards to be ultra-premium glass */
+.option, .pricing-card, .team-member, .auth-wrapper {
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.4) !important;
+}
+
+.option:hover, .pricing-card:hover, .team-member:hover {
+    box-shadow: 0 15px 45px 0 rgba(99, 102, 241, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Improved Typography tracking */
+h1, h2, h3 {
+    letter-spacing: -0.02em;
+}

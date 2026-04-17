@@ -4,12 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickSign - Easy Digital Signature Maker</title>
-    <!-- Favicon for the Browser Tab -->
+    <title>QuickSign - Login</title>
     <link rel="shortcut icon" href="../assets/favicon/favicon.png" type="image/x-icon">
-    <!-- Link to the external stylesheets -->
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../assets/css/login.css">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,9 +20,116 @@
             window.location.href = "../dashboard.html";
         }
     </script>
+    <style>
+        /* Specific adjustments for login to make it split screen or floating */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .auth-container-wrapper {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .auth-wrapper {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 24px;
+            padding: 50px;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .auth-heading {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .auth-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary-gradient);
+            background-size: 200% auto;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .auth-btn:hover {
+            background-position: right center;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        .form-footer {
+            margin-top: 25px;
+        }
+        
+        .form-footer a {
+            color: #6366f1;
+            font-weight: 500;
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Dynamic Background Orbs for Premium Feel -->
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar">
         <a href="../index.html" class="brand">
@@ -36,82 +140,38 @@
             <li><a href="../index.html">Home</a></li>
             <li><a href="../index.html#pricing">Pricing</a></li>
             <li><a href="../index.html#about">About Us</a></li>
-            <li><a href="../index.html#contact">Contact</a></li>
         </ul>
-        <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
+        <button class="login-btn" onclick="window.location.href='signup.html'">Sign Up</button>
     </nav>
 
-    <!-- Main Container for the Login Page -->
-    <div class="auth-wrapper">
-        <h1 class="auth-heading">Welcome Back</h1>
-        <p class="auth-subtitle">Log in to manage your digital signatures.</p>
+    <!-- Main Container -->
+    <div class="auth-container-wrapper">
+        <div class="auth-wrapper reveal-hidden">
+            <h1 class="auth-heading">Welcome Back</h1>
+            <p class="auth-subtitle">Log in to manage your digital signatures.</p>
 
-        <!-- Login Form -->
-        <form class="auth-form" onsubmit="_login(event)">
-            <div class="input-group">
-                <label for="loginEmail">Email Address</label>
-                <input type="email" id="loginEmail" placeholder="Enter your email" required>
+            <form class="auth-form" onsubmit="_login(event)">
+                <div class="input-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" placeholder="you@company.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="auth-btn">Login to QuickSign</button>
+            </form>
+
+            <div class="form-footer">
+                <p><a href="forgot-password.html">Forgot Password?</a></p>
+                <p style="margin-top: 10px;">Don't have an account? <a href="signup.html">Sign up</a></p>
             </div>
-            <div class="input-group">
-                <label for="loginPassword">Password</label>
-                <input type="password" id="loginPassword" placeholder="Enter your password" required>
-            </div>
-            <!-- Submit button for the login form -->
-            <button type="submit" class="auth-btn">Login to QuickSign</button>
-        </form>
-
-        <!-- Link for users to navigate to the forgot password page -->
-        <p class="form-p"><a class="form-a" href="forgot-password.html" style="font-weight: 500;">Forgot Password?</a></p>
-
-        <!-- Link for users to navigate to the sign-up page -->
-        <p class="form-p" style="margin-top: 5px;">Don't have an account? <a class="form-a" href="signup.html">Sign up</a></p>
+        </div>
     </div>
 
-    <!-- Footer Section -->
-    <footer>
-        <div class="footer-body">
-            <div class="footer-container">
-                <div class="sec discript">
-                    <div class="footer-logo">
-                        <img src="../logo.png" alt="Logo">
-                        <div class="logo">QuickSign</div>
-                    </div>
-                    <p>A premium user-friendly Signature App where you can seamlessly draw, customize, and save your
-                        digital signatures for professional use.</p>
-                </div>
-                <div class="sec quicklinks">
-                    <h2>Quick Links</h2>
-                    <ul>
-                        <li><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a></li>
-                        <li><a href="../index.html#about"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
-                        <li><a href="../index.html#pricing"><i class="fa-solid fa-hand-holding-dollar"></i> Pricing</a>
-                        </li>
-                        <li><a href="../index.html#contact"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="sec quicklinks">
-                    <h2>Support</h2>
-                    <ul>
-                        <li><a href="#"><i class="fa-solid fa-file-contract"></i> Terms</a></li>
-                        <li><a href="#"><i class="fa-solid fa-shield"></i> Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="sec followus">
-                    <h2>Follow us</h2>
-                    <ul class="social">
-                        <li><a href="#" class="icons"><i class="fa-brands fa-facebook-f"></i></a></li>
-                        <li><a href="#" class="icons"><i class="fa-brands fa-instagram"></i></a></li>
-                        <li><a href="#" class="icons"><i class="fa-brands fa-github"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="copyrights">
-            <p>&copy; 2025 <i>QuickSign</i> | All rights reserved.</p>
-            <p><i>Made By</i> <a class="alink" href="https://github.com/anchalchaturvedi08">Anchal Chaturvedi</a></p>
-        </div>
-    </footer>
+    <!-- Footer Section is reduced on login for cleaner UI -->
 
+    <script src="../scripts/main.js"></script>
     <script>
         /* exported _login */
         function _login(event) {
@@ -126,12 +186,22 @@
 
             if (user) {
                 localStorage.setItem("currentUser", JSON.stringify(user));
-                alert("Login successful!");
-                window.location.href = "../dashboard.html"; // create this page
+                // Add a smooth redirection instead of alert
+                const btn = event.target.querySelector('.auth-btn');
+                btn.textContent = "Logging in...";
+                btn.style.opacity = "0.8";
+                setTimeout(() => {
+                    window.location.href = "../dashboard.html";
+                }, 500);
             } else {
-                alert("Invalid credentials");
+                alert("Invalid credentials. Please try again.");
             }
         }
+        
+        // Ensure reveal triggers
+        setTimeout(() => {
+            document.querySelectorAll('.reveal-hidden').forEach(el => el.classList.add('reveal-visible'));
+        }, 100);
     </script>
 </body>
 
